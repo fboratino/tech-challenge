@@ -53,7 +53,7 @@ docker run --name portainer --restart=unless-stopped -d \
 ### Create a virtualenv
 
 ```bash
-python -m venv .venv && source .venv/bin/activate.fish
+python -m venv .venv ; source .venv/bin/activate.fish
 ```
 
 ### Install and Update packages
@@ -66,10 +66,4 @@ pip install -U pip setuptools ; pip install -r requirements.txt ; pip install -r
 
 ```bash
 python tech_challenge/app.py
-  first_name  last_name              email
-0       Jose      Silva     jose@email.com
-1      Maria      Alves    maria@email.com
-2    Antonio    Cardoso  antonio@email.com
-3      Pedro      Silva    pedro@email.com
-4     Carlos  Rodrigues   carlos@email.com
 ```
