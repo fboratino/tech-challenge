@@ -1,0 +1,43 @@
+version: "3.8"
+services:
+  db:
+    container_name: db
+    image: postgres:12
+    restart: always
+    environment:
+      - POSTGRES_USER=tech-challenge
+      - POSTGRES_PASSWORD=tech-challenge
+      - POSTGRES_DB=tech_challenge
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - db-network
+
+  db-client:
+    container_name: db-client
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=tech-challenge@email.com
+      - PGADMIN_DEFAULT_PASSWORD=tech-challenge
+    ports:
+      - "8080:80"
+    volumes:
+      - db-client-data:/var/lib/pgadmin
+    depends_on:
+      - db
+    networks:
+      - db-network
+
+volumes:
+  db-client-data:
+    name: db-client-data
+  db-data:
+    name: db-data
+
+networks:
+  db-network:
+    driver: bridge
+    name: db-network
