@@ -11,6 +11,7 @@ Component=Demographics&CycleBeginYear=2017",
 Component=Dietary&CycleBeginYear=2017",
 }
 
+dir = 'source_files/'
 
 def get_webpage_data(url) -> str:
     return requests.get(url).text
@@ -38,11 +39,11 @@ def get_all_filepaths() -> dict:
 def download_file():
     for filename, filepath in get_all_filepaths().items():
         file = requests.get(filepath, allow_redirects=True)
-        open(filename, "wb").write(file.content)
+        open(dir+filename, "wb").write(file.content)
 
 
 def get_dataframe_from_file() -> dict:
     dataframes = {}
     for filename in files:
-        dataframes[filename.split("_")[0]] = pd.read_sas(filename)
+        dataframes[filename.split("_")[0]] = pd.read_sas(dir+filename)
     return dataframes
