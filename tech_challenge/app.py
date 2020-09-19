@@ -8,11 +8,16 @@ engine = create_engine(
     echo=True,
 )
 
+def fillna(dataframe):
+    return dataframe.fillna(-1)
+
 if __name__ == "__main__":
 
     download_file()
-    df = get_dataframe_from_file()
-    logger.info(df)
+    raw_df = get_dataframe_from_file()
+    df = fillna(raw_df)
+    
+    # logger.info(df)
 
     # # insert records
     # df = pd.DataFrame(
