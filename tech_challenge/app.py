@@ -11,28 +11,17 @@ engine = create_engine(
 def fillna(dataframe):
     return dataframe.fillna(-1)
 
+
 if __name__ == "__main__":
 
     download_file()
     raw_df = get_dataframe_from_file()
-    df = fillna(raw_df)
+    dataframes = fillna(raw_df)
     
     # logger.info(df)
 
-    # # insert records
-    # df = pd.DataFrame(
-    #     {
-    #         "first_name": ["Jose", "Maria", "Antonio", "Pedro", "Carlos"],
-    #         "last_name": ["Silva", "Alves", "Cardoso", "Silva", "Rodrigues"],
-    #         "email": [
-    #             "jose@email.com",
-    #             "maria@email.com",
-    #             "antonio@email.com",
-    #             "pedro@email.com",
-    #             "carlos@email.com",
-    #         ],
-    #     }
-    # )
+    # for df in dataframes:
+        
     # df['DEMO'].to_sql("demographics", con=engine, index=False, if_exists="replace")
     # df['DEMO'].to_sql("demographics", con=engine, index=False, if_exists="replace")
 
