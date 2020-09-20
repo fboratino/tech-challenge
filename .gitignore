@@ -13,3 +13,4 @@ venv.bak/
 # Custom
 .vscode/
 __pycache__
+source_files/
