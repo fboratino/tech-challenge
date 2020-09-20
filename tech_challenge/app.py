@@ -9,21 +9,21 @@ engine = create_engine(
 )
 
 def fillna(dataframe):
-    return dataframe.fillna(-1)
-
+    for df in dataframe:
+        dataframe[df] = dataframe.fillna(-1)
 
 if __name__ == "__main__":
 
     download_file()
-    raw_df = get_dataframe_from_file()
-    dataframes = fillna(raw_df)
+    df = get_dataframe_from_file()
+    fillna(df)
     
     # logger.info(df)
 
     # for df in dataframes:
         
-    # df['DEMO'].to_sql("demographics", con=engine, index=False, if_exists="replace")
-    # df['DEMO'].to_sql("demographics", con=engine, index=False, if_exists="replace")
+    df['DEMO'].to_sql("demographics", con=engine, index=False, if_exists="replace")
+    df['DR1IFF'].to_sql("dietry_individual_foods_first_day", con=engine, index=False, if_exists="replace")
 
     # # show records
     # conn = engine.connect()
