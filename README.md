@@ -65,5 +65,5 @@ pip install -U pip setuptools ; pip install -r requirements.txt ; pip install -r
 ### Execute script
 
 ```bash
-python tech_challenge/app.py
+python python/app.py
 ```
