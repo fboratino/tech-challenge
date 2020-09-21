@@ -23,7 +23,8 @@ if __name__ == "__main__":
     dataframe = get_dataframe_from_file()
     for df in dataframe:
         dataframe[df] = data_frame_adjustments(dataframe[df])
-        dataframe[df].to_sql(df.lower(), con=engine, index=False, if_exists="append")
+        dataframe[df]. \
+            to_sql(df.lower(), con=engine, index=False, if_exists="append")
 
     # show records
     conn = engine.connect()
